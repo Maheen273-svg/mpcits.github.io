@@ -106,7 +106,7 @@
   <hr>
 
   <section id="contact">
-    <h2>Contact Us</h2>
+    <h2>Contact Us📞</h2>
     <p>.Fill the form to join our society: <a href=" https://forms.gle/Nw4L7jjMJRdbxcNf6"_blank">github.com/mpcits</a></p>
     <p>.Email: <a href="eaglefire903@gmail.com">pcicts@school.edu</a></p>
     <p>.Follow us on Facebook: <a href="http://bit.ly/pcictsfb"_blank">github.com/mpcits</a></p>
@@ -115,8 +115,43 @@
     </a></p>
     <p>contact no: <a href=" +94 76 770 8978">Randinu- +94 76 770 8978</a></p>
     <br>
+    
     <hr>
   </section>
+  <style>
+    .star-rating {
+      direction: rtl;
+      display: inline-flex;
+      font-size: 2em;
+    }
+
+    .star-rating input[type="radio"] {
+      display: none;
+    }
+
+    .star-rating label {
+      color: lightgray;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .star-rating input:checked ~ label,
+    .star-rating label:hover,
+    .star-rating label:hover ~ label {
+      color: gold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Rate this:</h2>
+  <div class="star-rating">
+    <input type="radio" name="rating" id="star5"><label for="star5">★</label>
+    <input type="radio" name="rating" id="star4"><label for="star4">★</label>
+    <input type="radio" name="rating" id="star3"><label for="star3">★</label>
+    <input type="radio" name="rating" id="star2"><label for="star2">★</label>
+    <input type="radio" name="rating" id="star1"><label for="star1">★</label>
+  </div>
 
   <footer>
     &copy; 2025 MPC ICT Society (PCICTS). All rights reserved.
