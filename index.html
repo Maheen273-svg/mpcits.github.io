@@ -35,10 +35,12 @@
     }
 
     header {
-      background: linear-gradient(135deg, var(--primary), #ffe75c);
+      background: linear-gradient(135deg, var(--primary), #ffe75c),
+                  url('https://via.placeholder.com/1200x800?text=Tech+Doodles') no-repeat center center/cover;
       text-align: center;
       padding: 3rem 1rem 2rem;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      position: relative;
     }
 
     header img {
@@ -284,7 +286,7 @@
       </div>
       <div class="slide">
         <img src="https://via.placeholder.com/400x200?text=Game+Jam" alt="Event 3">
-        <p><strong>workshop on ICT</strong> Unity Game Development Competition</p>
+        <p><strong>Workshop on ICT:</strong> Unity Game Development Competition</p>
       </div>
     </div>
   </section>
@@ -318,42 +320,11 @@
       <input type="radio" name="rating" id="star1"><label for="star1">★</label>
     </div>
   </section>
+
   <!-- Floating Chat Button -->
-<a href="https://wa.me/94767708978" target="_blank" class="chat-button" title="Chat with Us on WhatsApp">
-  💬
-</a>
-
-<style>
-  .chat-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: var(--accent);
-    color: white;
-    font-size: 1.6rem;
-    width: 55px;
-    height: 55px;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 55px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    z-index: 999;
-    transition: background 0.3s, transform 0.3s;
-    text-decoration: none;
-  }
-
-  .chat-button:hover {
-    background: var(--primary);
-    color: black;
-    transform: scale(1.1);
-  }
-
-  body.dark-mode .chat-button {
-    background: var(--primary);
-    color: #111;
-  }
-</style>
-
+  <a href="https://wa.me/94767708978" target="_blank" class="chat-button" title="Chat with Us on WhatsApp">
+    💬
+  </a>
 
   <footer>
     &copy; 2025 MPC ICT Society (PCICTS). All rights reserved.
@@ -364,6 +335,8 @@
       document.body.classList.toggle("dark-mode");
     }
   </script>
+
 </body>
 </html>
+
 
