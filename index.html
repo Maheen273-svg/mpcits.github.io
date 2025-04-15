@@ -6,6 +6,21 @@
   <title>PCICTS - ICT Society</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --primary: #FFD700;
+      --dark: #800000;
+      --accent: #00509e;
+      --bg: #f4f6f8;
+      --text: #333;
+    }
+
+    body.dark-mode {
+      --bg: #121212;
+      --text: #eee;
+      --primary: #FFD700;
+      --accent: #1e90ff;
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -14,69 +29,97 @@
 
     body {
       font-family: 'Roboto', sans-serif;
-      background-color: #f4f6f8;
-      color: #333;
-      line-height: 1.6;
+      background-color: var(--bg);
+      color: var(--text);
+      transition: background-color 0.4s, color 0.4s;
     }
 
     header {
-      background-color: #FFD700;
+      background: linear-gradient(135deg, var(--primary), #ffe75c);
       text-align: center;
-      padding: 2rem 1rem;
+      padding: 3rem 1rem 2rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
     header img {
       width: 150px;
       height: 150px;
       border-radius: 50%;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
       margin-bottom: 1rem;
     }
 
     header h1 {
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-    }
-
-    header h2 {
-      font-size: 1.3rem;
-      color: #800000;
-      margin-bottom: 0.5rem;
+      font-size: 2.2rem;
+      margin-bottom: 0.3rem;
+      color: var(--dark);
     }
 
     nav {
-      background-color: #800000;
-      padding: 1rem;
+      background-color: var(--dark);
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
+      padding: 1rem;
     }
 
     nav a {
       color: #fff;
-      margin: 0 15px;
+      margin: 0 20px;
       text-decoration: none;
       font-weight: bold;
-      transition: color 0.3s;
+      position: relative;
+      transition: 0.3s;
     }
 
-    nav a:hover {
-      color: #FFD700;
+    nav a::after {
+      content: '';
+      display: block;
+      height: 2px;
+      background: var(--primary);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+      transform-origin: left;
+    }
+
+    nav a:hover::after {
+      transform: scaleX(1);
+    }
+
+    .mode-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 8px 15px;
+      background: var(--dark);
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      z-index: 999;
+      transition: background 0.3s;
+    }
+
+    .mode-toggle:hover {
+      background: var(--accent);
     }
 
     section {
-      padding: 2rem 1rem;
-      max-width: 900px;
+      padding: 3rem 1.5rem;
+      max-width: 1000px;
       margin: auto;
     }
 
     .hero {
       text-align: center;
       margin-bottom: 2rem;
+      animation: fadeInUp 1s ease forwards;
     }
 
     h2 {
-      color: #00509e;
+      color: var(--accent);
       margin-bottom: 1rem;
+      font-size: 2rem;
     }
 
     ul {
@@ -85,20 +128,23 @@
     }
 
     ul li {
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.8rem;
+      background: white;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
 
-    a {
-      color: #00509e;
-    }
-
-    a:hover {
-      text-decoration: underline;
+    body.dark-mode ul li {
+      background: #1e1e1e;
     }
 
     .contact a {
       display: block;
       margin-bottom: 0.5rem;
+      color: var(--accent);
+      font-weight: bold;
+      text-decoration: none;
     }
 
     .star-rating {
@@ -125,21 +171,69 @@
       color: gold;
     }
 
+    /* Slider Styles */
+    .slider {
+      display: flex;
+      overflow-x: auto;
+      gap: 1rem;
+      scroll-snap-type: x mandatory;
+      padding: 1rem 0;
+    }
+
+    .slide {
+      flex: 0 0 80%;
+      scroll-snap-align: center;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 1rem;
+      min-width: 300px;
+    }
+
+    body.dark-mode .slide {
+      background: #1e1e1e;
+    }
+
+    .slide img {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+    }
+
     footer {
-      background-color: #FFD700;
+      background: var(--primary);
       text-align: center;
       padding: 1rem;
       font-weight: bold;
+      box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
     }
 
-    @media (max-width: 600px) {
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
       nav a {
-        margin: 5px;
+        margin: 10px;
+      }
+
+      h2 {
+        font-size: 1.5rem;
       }
     }
   </style>
 </head>
 <body>
+
+  <!-- Theme toggle -->
+  <button class="mode-toggle" onclick="toggleMode()">🌗 Mode</button>
 
   <header>
     <img src="Screenshot 2025-04-14 105237.png" alt="PCICTS Logo" />
@@ -151,6 +245,7 @@
   <nav>
     <a href="#about">About</a>
     <a href="#activities">Activities</a>
+    <a href="#events">Events</a>
     <a href="#team">Team</a>
     <a href="#contact">Contact</a>
   </nav>
@@ -176,6 +271,24 @@
     </ul>
   </section>
 
+  <section id="events">
+    <h2>Past Events 📸</h2>
+    <div class="slider">
+      <div class="slide">
+        <img src="https://via.placeholder.com/400x200?text=Workshop+1" alt="Event 1">
+        <p><strong>Workshop 1:</strong> Introduction to Web Design - 2024</p>
+      </div>
+      <div class="slide">
+        <img src="https://via.placeholder.com/400x200?text=Hackathon+2024" alt="Event 2">
+        <p><strong>Hackathon 2024:</strong> 24hr Coding Challenge</p>
+      </div>
+      <div class="slide">
+        <img src="https://via.placeholder.com/400x200?text=Game+Jam" alt="Event 3">
+        <p><strong>Game Jam:</strong> Unity Game Development Competition</p>
+      </div>
+    </div>
+  </section>
+
   <section id="team">
     <h2>Our Team</h2>
     <ul>
@@ -196,7 +309,7 @@
       <p><a href="tel:+94767708978">Randinu - +94 76 770 8978</a></p>
     </div>
 
-    <h3>Rate this Website ⭐</h3>
+    <h3 style="text-align: center;">Rate this Website ⭐</h3>
     <div class="star-rating">
       <input type="radio" name="rating" id="star5"><label for="star5">★</label>
       <input type="radio" name="rating" id="star4"><label for="star4">★</label>
@@ -209,5 +322,12 @@
   <footer>
     &copy; 2025 MPC ICT Society (PCICTS). All rights reserved.
   </footer>
+
+  <script>
+    function toggleMode() {
+      document.body.classList.toggle("dark-mode");
+    }
+  </script>
 </body>
 </html>
+
